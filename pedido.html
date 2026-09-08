@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tu pedido — FantasIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="polish.css" />
+    <link rel="stylesheet" href="enhance.css" />
+    <link rel="stylesheet" href="brand.css" />
+    <link rel="stylesheet" href="icons.css" />
+    <link rel="stylesheet" href="finish.css" />
+    <link rel="stylesheet" href="motion.css" />
+    <link rel="stylesheet" href="contrast.css" />
+    <link rel="stylesheet" href="fia.css" />
+    <link rel="stylesheet" href="robot-polish.css" />
+    <link rel="stylesheet" href="fia-intro.css" />
+    <link rel="stylesheet" href="fia-state.css" />
+    <link rel="stylesheet" href="welcome.css" />
+    <link rel="stylesheet" href="final-polish.css" />
+    <link rel="stylesheet" href="icons-consistency.css" />
+  </head>
+  <body class="order-page">
+    <main class="order-shell">
+      <a class="brand order-brand" href="index.html#inicio"><img class="brand-logo" src="fantasia-mark.svg" alt="" aria-hidden="true" /><span class="brand-name">FantasIA</span></a>
+      <div class="order-layout">
+        <section class="order-intro"><a class="back-link" href="index.html#servicios">← Volver a servicios</a><p class="eyebrow">Tu pedido</p><h1>Empecemos con<br /><em>lo importante.</em></h1><p>Rellena tus datos para dejar preparado el servicio. El pago online se activará en una segunda fase cuando la conexión con Stripe esté lista.</p><div class="order-steps"><span class="active">01 <small>Datos</small></span><i></i><span>02 <small>Pago</small></span><i></i><span>03 <small>Listo</small></span></div></section>
+        <section class="order-card"><div class="selected-service"><div><span class="area-label">Servicio seleccionado</span><h2 id="service-name">Cargando…</h2></div><div class="selected-price" id="service-price">—</div></div><form id="order-form"><label>Nombre y apellidos<input name="name" required placeholder="Tu nombre" /></label><label>Nombre del negocio<input name="business" required placeholder="Tu negocio" /></label><label>Email de contacto<input type="email" name="email" required placeholder="tu@email.com" /></label><label>Cuéntanos algo más <span class="optional">Opcional</span><textarea name="notes" rows="4" placeholder="Detalles, objetivos o preferencias"></textarea></label><button class="button button-primary" type="submit">Continuar al pago <span>→</span></button><p class="payment-hold"><span>◷</span> El pago online estará disponible próximamente. Ahora mismo no se realizará ningún cobro.</p></form><div class="order-success" id="order-success" hidden><span class="success-mark">✓</span><h2>Datos guardados</h2><p>Esta es una vista previa del flujo de compra. El pago todavía no está activo. Te contactaremos para continuar con el servicio.</p><a class="button button-primary" href="index.html#inicio">Volver a la web</a></div></section>
+      </div>
+    </main>
+    <script src="order.js"></script>
+  </body>
+</html>
