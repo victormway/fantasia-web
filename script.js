@@ -179,8 +179,8 @@ tablet?.addEventListener('pointerdown', (event) => {
 });
 tablet?.addEventListener('pointermove', (event) => {
   if (!tabletDrag) return;
-  tabletDrag.ry = Math.max(-18, Math.min(18, tabletDrag.ry + (event.clientX - tabletDrag.x) * .16));
-  tabletDrag.rx = Math.max(-14, Math.min(14, tabletDrag.rx - (event.clientY - tabletDrag.y) * .16));
+  tabletDrag.ry += (event.clientX - tabletDrag.x) * .42;
+  tabletDrag.rx += (event.clientY - tabletDrag.y) * -.42;
   tablet.style.setProperty('--tablet-x', `${tabletDrag.rx}deg`);
   tablet.style.setProperty('--tablet-y', `${tabletDrag.ry}deg`);
   tabletDrag.x = event.clientX;

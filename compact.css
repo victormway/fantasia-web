@@ -20,4 +20,17 @@
 .fia-robot-art{background-image:url("fia-robot-transparent.png")!important;background-size:235%!important;background-position:50% 12%!important;background-repeat:no-repeat!important;border:0!important;box-shadow:none!important}
 .service-card,.pack-card,.custom-price-box,.location-item{border-width:1.9px}
 .main-nav a:not(.nav-cta){color:#d8d1e8}
+.nav-tab{padding:9px 13px!important;border:1px solid rgba(95,156,255,.28);border-radius:999px;background:rgba(59,130,246,.07)}
+.nav-tab span{color:#7faeff;margin-left:4px}
+.visual-card-top,.visual-lines,.visual-dashboard,.visual-footer{display:none}
+.hero-visual .visual-card{display:grid;place-items:center;min-height:390px;background:radial-gradient(circle at 50% 48%,rgba(59,130,246,.16),transparent 46%),linear-gradient(145deg,rgba(35,31,52,.95),rgba(15,15,22,.96))}
+.hero-visual .visual-card:before{content:"";position:absolute;inset:17%;background:url("fantasia-mark.svg") center/45% no-repeat;opacity:.28;filter:drop-shadow(0 0 20px rgba(95,156,255,.5));border:0;transform:none}
+.hero-visual .visual-card:after{content:"";position:absolute;inset:-30%;height:auto;background:linear-gradient(90deg,transparent,rgba(95,156,255,.13),transparent);transform:rotate(-18deg);pointer-events:none}
+.process-section,.about-section{display:none}
+.location-section{padding-top:18px;padding-bottom:45px;grid-template-columns:.62fr 1.38fr;gap:38px}
+.location-heading h2{font-size:clamp(1.7rem,3vw,2.7rem)}
+.location-heading>p:not(.eyebrow){font-size:.82rem;margin-top:15px}
+.location-grid{grid-template-columns:repeat(3,1fr);gap:9px}.location-item{padding:13px;gap:10px;border-radius:13px}.location-icon{width:32px;height:32px;border-radius:10px;font-size:.95rem}.location-item strong{font-size:.77rem}.location-item p{font-size:.65rem}.location-item a{color:#c8d8ff;text-decoration:none}
+.fia-assistant{right:24px;bottom:18%;transition:transform .25s ease}.fia-assistant.is-dragging{transform:none!important}
+@media(max-width:720px){.location-section{grid-template-columns:1fr;gap:18px}.location-grid{grid-template-columns:1fr}.location-item{padding:11px 13px}.fia-assistant{right:50%;bottom:16%;transform:translateX(50%)}.fia-panel{right:50%;transform:translateX(50%)}.fia-launcher{padding-right:13px}.hero-visual .visual-card{min-height:330px}}
 @media(max-width:720px){.hero{padding-bottom:55px}.hero-visual{height:390px}.intro-section,.section,.packs-section,.pricing-section,.benefits-section,.process-section,.contact-section{padding-top:58px;padding-bottom:58px}.location-section{padding-bottom:60px}}
