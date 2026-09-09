@@ -176,7 +176,7 @@ if (fiaWelcomed) {
     fiaIntro?.classList.add('is-complete');
     fia?.classList.add('fia-ready');
     try { sessionStorage.setItem('fantasia-fia-welcomed', '1'); } catch {}
-  }, 3000);
+  }, 2000);
 }
 
 // La tablet del hero admite un giro suave con el ratón o el dedo, sin añadir librerías.
