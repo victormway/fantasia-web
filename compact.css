@@ -1,0 +1,23 @@
+/* Último ajuste visual: recorrido más compacto y mejor equilibrio morado/azul. */
+.hero{min-height:auto;padding-top:38px;padding-bottom:58px}
+.hero-visual{height:500px}
+.intro-section{padding:78px 0 70px}
+.section{padding:30px 0 70px}
+.service-area{padding-top:35px}
+.service-area+.service-area{margin-top:55px}
+.packs-section{padding:75px 0}
+.pricing-section{padding:65px 0 80px}
+.benefits-section{padding:78px 0}
+.process-section{padding:82px 0}
+.about-section{padding-bottom:80px}
+.faq-section{padding-bottom:85px}
+.contact-section{padding:78px 0}
+.location-section{padding-bottom:80px}
+.site-footer{padding-top:28px}
+.hero-visual .visual-card{transform:perspective(900px) rotateX(var(--tablet-x,0deg)) rotateY(var(--tablet-y,4deg)) rotateZ(2deg);transform-style:preserve-3d;cursor:grab;transition:box-shadow .3s ease}
+.hero-visual .visual-card:active{cursor:grabbing;box-shadow:0 34px 90px rgba(57,31,151,.3),0 0 28px rgba(59,130,246,.16)}
+.fia-intro-robot img{background:transparent;filter:drop-shadow(0 0 28px rgba(106,75,255,.5))}
+.fia-robot-art{background-image:url("fia-robot-transparent.png")!important;background-size:235%!important;background-position:50% 12%!important;background-repeat:no-repeat!important;border:0!important;box-shadow:none!important}
+.service-card,.pack-card,.custom-price-box,.location-item{border-width:1.9px}
+.main-nav a:not(.nav-cta){color:#d8d1e8}
+@media(max-width:720px){.hero{padding-bottom:55px}.hero-visual{height:390px}.intro-section,.section,.packs-section,.pricing-section,.benefits-section,.process-section,.contact-section{padding-top:58px;padding-bottom:58px}.location-section{padding-bottom:60px}}

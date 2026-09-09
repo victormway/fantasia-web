@@ -168,3 +168,24 @@ window.setTimeout(() => {
   fiaIntro?.classList.add('is-complete');
   fia?.classList.add('fia-ready');
 }, 3000);
+
+// La tablet del hero admite un giro suave con el ratón o el dedo, sin añadir librerías.
+const tablet = document.querySelector('.visual-card');
+let tabletDrag = null;
+tablet?.addEventListener('pointerdown', (event) => {
+  tabletDrag = { x: event.clientX, y: event.clientY, rx: 0, ry: 4 };
+  tablet.setPointerCapture(event.pointerId);
+  tablet.classList.add('is-interacting');
+});
+tablet?.addEventListener('pointermove', (event) => {
+  if (!tabletDrag) return;
+  tabletDrag.ry = Math.max(-18, Math.min(18, tabletDrag.ry + (event.clientX - tabletDrag.x) * .16));
+  tabletDrag.rx = Math.max(-14, Math.min(14, tabletDrag.rx - (event.clientY - tabletDrag.y) * .16));
+  tablet.style.setProperty('--tablet-x', `${tabletDrag.rx}deg`);
+  tablet.style.setProperty('--tablet-y', `${tabletDrag.ry}deg`);
+  tabletDrag.x = event.clientX;
+  tabletDrag.y = event.clientY;
+});
+const releaseTablet = () => { tabletDrag = null; tablet?.classList.remove('is-interacting'); };
+tablet?.addEventListener('pointerup', releaseTablet);
+tablet?.addEventListener('pointercancel', releaseTablet);
