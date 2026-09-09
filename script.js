@@ -164,10 +164,17 @@ fiaLauncher?.addEventListener('pointermove', (event) => {
 });
 fiaLauncher?.addEventListener('pointerup', () => { dragState = null; fia.classList.remove('is-dragging'); });
 
-window.setTimeout(() => {
+const fiaWelcomed = (() => { try { return sessionStorage.getItem('fantasia-fia-welcomed') === '1'; } catch { return false; } })();
+if (fiaWelcomed) {
   fiaIntro?.classList.add('is-complete');
   fia?.classList.add('fia-ready');
-}, 3000);
+} else {
+  window.setTimeout(() => {
+    fiaIntro?.classList.add('is-complete');
+    fia?.classList.add('fia-ready');
+    try { sessionStorage.setItem('fantasia-fia-welcomed', '1'); } catch {}
+  }, 3000);
+}
 
 // La tablet del hero admite un giro suave con el ratón o el dedo, sin añadir librerías.
 const tablet = document.querySelector('.visual-card');
