@@ -13,6 +13,9 @@ document.querySelectorAll('.main-nav a').forEach((link) => {
     menuToggle?.setAttribute('aria-expanded', 'false');
   });
 });
+document.querySelector('.nav-tab')?.addEventListener('click', () => {
+  document.querySelectorAll('#faq details').forEach((item) => { item.open = true; });
+});
 
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 12), { passive: true });
 
