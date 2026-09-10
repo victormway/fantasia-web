@@ -129,9 +129,9 @@ function fiaReply(question) {
   if (text.includes('correo') || text.includes('email') || text.includes('mail')) return 'Puedes escribirnos directamente a informacion.fantasia@gmail.com. También tienes WhatsApp en el 615 987 988.';
   if (text.includes('dónde') || text.includes('donde') || text.includes('ubic')) return 'FantasIA está en Oliva y alrededores. También trabajamos online con clientes de cualquier lugar.';
   if (text.includes('pago') || text.includes('pagando') || text.includes('stripe') || text.includes('checkout')) return 'Los pagos online todavía no están activos. Si has llegado al pedido, puedes rellenar tus datos y te contactaremos para continuar sin realizar ningún cobro.';
-  if (text.includes('precio') || text.includes('cuánto') || text.includes('cuanto') || text.includes('cost')) return 'Tenemos servicios cerrados desde 49 €/mes de mantenimiento, webs de 499–599 €, estrategia desde 149 € y el Pack Contenido y Redes por 799 €/mes. Los proyectos de IA y automatización se presupuestan a medida.';
+  if (text.includes('precio') || text.includes('cuánto') || text.includes('cuanto') || text.includes('cost')) return 'Ahora mismo la web es informativa y no mostramos precios ni activamos compras. Si quieres conocer una solución, escríbenos y te orientaremos personalmente.';
   if (text.includes('servicio') || text.includes('web') || text.includes('ia') || text.includes('automat') || text.includes('redes')) return 'Podemos ayudarte con una web, un Asistente de Atención al Cliente, un Asistente administrativo, una Automatización personalizada o contenido y redes. ¿Cuál te interesa?';
-  return 'Puedo orientarte sobre servicios, precios, contacto, ubicación y el proceso de pedido. ¿Qué tipo de solución busca tu negocio?';
+  return 'Puedo orientarte sobre nuestros servicios, contacto y ubicación. ¿Qué tipo de solución busca tu negocio?';
 }
 
 function askFia(question) {
