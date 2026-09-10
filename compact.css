@@ -40,3 +40,5 @@ body:after{animation:background-drift 22s ease-in-out infinite alternate}
 @keyframes background-drift{from{background-position:0 0,100% 0,50% 0}to{background-position:2% 3%,97% 5%,48% 2%}}
 @media(max-width:720px){.location-section{grid-template-columns:1fr;gap:18px}.location-grid{grid-template-columns:1fr}.location-item{padding:11px 13px}.fia-assistant{right:50%;bottom:16%;transform:translateX(50%)}.fia-panel{right:50%;transform:translateX(50%)}.fia-launcher{padding-right:13px}.hero-visual .visual-card{min-height:330px}}
 @media(max-width:720px){.hero{padding-bottom:55px}.hero-visual{height:390px}.intro-section,.section,.packs-section,.pricing-section,.benefits-section,.process-section,.contact-section{padding-top:58px;padding-bottom:58px}.location-section{padding-bottom:60px}}
+/* Fase escaparate: presentamos los servicios sin precios ni formularios. */
+.price,.custom-price,.price-prefix,.pack-card-price,.scope-note,.contact-form,.custom-form{display:none!important}
