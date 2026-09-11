@@ -134,12 +134,33 @@ function fiaReply(question) {
   return 'Puedo orientarte sobre nuestros servicios, contacto y ubicación. ¿Qué tipo de solución busca tu negocio?';
 }
 
-function askFia(question) {
+async function askFia(question) {
   const clean = question.trim();
   if (!clean) return;
   addFiaMessage(clean, 'user');
   fia.classList.add('is-thinking');
-  window.setTimeout(() => { fia.classList.remove('is-thinking'); addFiaMessage(fiaReply(clean)); }, 650);
+
+  let sessionId = sessionStorage.getItem('fantasia-fia-session');
+  if (!sessionId) {
+    sessionId = crypto.randomUUID();
+    sessionStorage.setItem('fantasia-fia-session', sessionId);
+  }
+
+  try {
+    const response = await fetch('/.netlify/functions/fia', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ source: 'web', message: clean, sessionId }),
+    });
+    const data = await response.json();
+    if (!response.ok || !data.reply) throw new Error(data.error || 'Respuesta no válida');
+    addFiaMessage(data.reply);
+  } catch (error) {
+    console.error('FIA no pudo conectar con Make:', error);
+    addFiaMessage('Ahora mismo no puedo conectarme. Puedes escribirnos a informacion.fantasia@gmail.com o por WhatsApp en el 615 987 988.');
+  } finally {
+    fia.classList.remove('is-thinking');
+  }
 }
 
 fiaLauncher?.addEventListener('click', () => {
