@@ -139,3 +139,42 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+<script>
+(function () {
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function slotsFor(date) {
+    const day = date.getDay();
+    const weekend = day === 0 || day === 6;
+    const start = weekend ? 11 * 60 : ((day === 2 || day === 4) ? 15 * 60 + 15 : 14 * 60);
+    const end = weekend ? 20 * 60 : 22 * 60;
+    const slots = [];
+    for (let m = start; m + 30 <= end; m += 30) slots.push(pad(Math.floor(m / 60)) + ':' + pad(m % 60));
+    return slots;
+  }
+  function patchBookingForm() {
+    const oldForm = document.querySelector('.service-modal .booking-form');
+    if (!oldForm || oldForm.dataset.phonePatch === '1') return;
+    const form = oldForm.cloneNode(false);
+    form.dataset.phonePatch = '1';
+    form.hidden = false;
+    form.innerHTML = '<label>Nombre<input name="name" required autocomplete="name"></label><label>Prefijo<input name="prefix" list="fia-country-prefixes" value="+34" required inputmode="tel"><datalist id="fia-country-prefixes"><option value="+34">España</option><option value="+33">Francia</option><option value="+351">Portugal</option><option value="+44">Reino Unido</option><option value="+49">Alemania</option><option value="+39">Italia</option><option value="+1">Estados Unidos / Canadá</option><option value="+52">México</option><option value="+54">Argentina</option><option value="+57">Colombia</option><option value="+58">Venezuela</option><option value="+61">Australia</option></datalist></label><label>Número de teléfono<input name="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="615 987 988"></label><label>Día<select name="date" required></select></label><label>Hora<select name="time" required></select></label><button class="service-action service-action--confirm" type="submit">Confirmar solicitud</button><p class="booking-note">Duración: 30 minutos · Antelación mínima: 1 día.</p>';
+    oldForm.replaceWith(form);
+    const date = form.querySelector('[name=date]');
+    const time = form.querySelector('[name=time]');
+    const fillTimes = () => { time.innerHTML = slotsFor(new Date(date.value + 'T12:00:00')).map(s => '<option value="' + s + '">' + s + '</option>').join(''); };
+    for (let i = 1; i <= 60; i++) { const d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + i); const o = document.createElement('option'); o.value = d.toISOString().slice(0, 10); o.textContent = new Intl.DateTimeFormat('es-ES', {weekday:'long', day:'numeric', month:'long'}).format(d); date.appendChild(o); }
+    date.addEventListener('change', fillTimes); fillTimes();
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const data = new FormData(form); const day = String(data.get('date')); const hour = String(data.get('time')); const phone = String(data.get('prefix')).trim() + ' ' + String(data.get('phone')).trim(); const service = document.querySelector('#service-modal-title')?.textContent.replace(/^Conoce\s+/, '') || 'servicio';
+      const message = 'SOLICITUD DE RESERVA WEB. Servicio: ' + service + '. Nombre del cliente: ' + data.get('name') + '. Teléfono: ' + phone + '. Fecha solicitada: ' + day + ' a las ' + hour + '. Duración: 30 minutos. Comprueba disponibilidad real en Google Calendar y el límite de 2 reservas diarias. Si está libre, crea el evento con título EXACTAMENTE igual al nombre del cliente y añade el servicio y teléfono en la descripción. Después, envía a Víctor una notificación especial por WhatsApp con: Hola, he reservado el día ' + day + ' a las ' + hour + '. Cliente: ' + data.get('name') + '. Teléfono: ' + phone + '. No confirmes la reserva hasta que el calendario confirme el evento.';
+      const status = document.querySelector('.service-modal__status'); if (status) status.textContent = 'Comprobando disponibilidad…';
+      if (typeof window.askFia === 'function') await window.askFia(message);
+      if (status) status.textContent = 'Solicitud enviada. FIA confirmará la reserva cuando el calendario la valide.';
+      form.reset(); form.querySelector('[name=prefix]').value = '+34';
+    });
+  }
+  document.addEventListener('click', function (event) { if (event.target.closest('[data-service-action="booking"]')) setTimeout(patchBookingForm, 50); });
+})();
+</script>
