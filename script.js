@@ -220,3 +220,93 @@ tablet?.addEventListener('pointermove', (event) => {
 const releaseTablet = () => { tabletDrag = null; tablet?.classList.remove('is-interacting'); };
 tablet?.addEventListener('pointerup', releaseTablet);
 tablet?.addEventListener('pointercancel', releaseTablet);
+
+// Acciones de servicio: contacto rápido y reserva guiada.
+(function setupServiceActions() {
+  const serviceLinks = document.querySelectorAll('.service-card a.text-link');
+  if (!serviceLinks.length) return;
+  const modal = document.createElement('div');
+  modal.className = 'service-modal';
+  modal.hidden = true;
+  modal.innerHTML = '<div class="service-modal__backdrop" data-close-service></div><section class="service-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="service-modal-title"><button class="service-modal__close" type="button" aria-label="Cerrar" data-close-service>×</button><p class="eyebrow">Tu siguiente paso</p><h2 id="service-modal-title">Conoce el servicio</h2><p class="service-modal__intro">Elige cómo quieres continuar y te ayudaremos con tu proyecto.</p><div class="service-modal__actions"><button type="button" class="service-action service-action--whatsapp" data-service-action="whatsapp">WhatsApp</button><button type="button" class="service-action service-action--email" data-service-action="email">Email</button><button type="button" class="service-action service-action--booking" data-service-action="booking">Reservar llamada</button></div><form class="booking-form" hidden><label>Nombre<input name="name" required autocomplete="name" /></label><label>Email<input name="email" type="email" required autocomplete="email" /></label><label>Día<select name="date" required></select></label><label>Hora<select name="time" required></select></label><button class="service-action service-action--confirm" type="submit">Confirmar solicitud</button><p class="booking-note">Duración: 30 minutos · Antelación mínima: 1 día.</p></form><p class="service-modal__status" role="status"></p></section>';
+  document.body.appendChild(modal);
+  const title = modal.querySelector('#service-modal-title');
+  const actions = modal.querySelector('.service-modal__actions');
+  const bookingForm = modal.querySelector('.booking-form');
+  const status = modal.querySelector('.service-modal__status');
+  const dateSelect = bookingForm.querySelector('[name=date]');
+  const timeSelect = bookingForm.querySelector('[name=time]');
+  let selectedService = '';
+  const pad = (number) => String(number).padStart(2, '0');
+  const dateLabel = (date) => new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }).format(date);
+  function slotsFor(date) {
+    const day = date.getDay();
+    const weekend = day === 0 || day === 6;
+    const start = weekend ? 11 * 60 : (day === 2 || day === 4 ? 15 * 60 + 15 : 14 * 60);
+    const end = weekend ? 20 * 60 : 22 * 60;
+    const slots = [];
+    for (let minutes = start; minutes + 30 <= end; minutes += 30) slots.push(pad(Math.floor(minutes / 60)) + ':' + pad(minutes % 60));
+    return slots;
+  }
+  function fillDates() {
+    dateSelect.innerHTML = '';
+    const today = new Date();
+    for (let offset = 1; offset <= 60; offset += 1) {
+      const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + offset);
+      const option = document.createElement('option');
+      option.value = date.toISOString().slice(0, 10);
+      option.textContent = dateLabel(date);
+      dateSelect.appendChild(option);
+    }
+    fillTimes();
+  }
+  function fillTimes() {
+    const date = new Date(dateSelect.value + 'T12:00:00');
+    timeSelect.innerHTML = slotsFor(date).map((slot) => '<option value="' + slot + '">' + slot + '</option>').join('');
+  }
+  function openModal(service) {
+    selectedService = service;
+    title.textContent = 'Conoce ' + service;
+    status.textContent = '';
+    actions.hidden = false;
+    bookingForm.hidden = true;
+    modal.hidden = false;
+    document.body.classList.add('service-modal-open');
+  }
+  function closeModal() {
+    modal.hidden = true;
+    document.body.classList.remove('service-modal-open');
+  }
+  function contactMessage() { return 'Hola, quiero conocer un poco más sobre ' + selectedService + '.'; }
+  serviceLinks.forEach((link) => link.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const card = link.closest('.service-card');
+    openModal(card?.querySelector('h4')?.textContent.trim() || 'este servicio');
+  }, true));
+  modal.addEventListener('click', (event) => {
+    const close = event.target.closest('[data-close-service]');
+    if (close) closeModal();
+    const action = event.target.closest('[data-service-action]');
+    if (!action) return;
+    const message = contactMessage();
+    if (action.dataset.serviceAction === 'whatsapp') window.open('https://wa.me/34615987988?text=' + encodeURIComponent(message), '_blank', 'noopener');
+    if (action.dataset.serviceAction === 'email') window.open('mailto:informacion.fantasia@gmail.com?subject=' + encodeURIComponent('Consulta sobre ' + selectedService) + '&body=' + encodeURIComponent(message), '_blank');
+    if (action.dataset.serviceAction === 'booking') { actions.hidden = true; bookingForm.hidden = false; fillDates(); bookingForm.querySelector('[name=name]').focus(); }
+  });
+  dateSelect.addEventListener('change', fillTimes);
+  bookingForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const form = new FormData(bookingForm);
+    const date = String(form.get('date'));
+    const time = String(form.get('time'));
+    const message = 'Quiero reservar una llamada de 30 minutos sobre ' + selectedService + '. Nombre: ' + form.get('name') + '. Email: ' + form.get('email') + '. Fecha solicitada: ' + date + ' a las ' + time + '. Comprueba disponibilidad en Google Calendar y crea la reserva solo si está disponible y cumple las reglas.';
+    status.textContent = 'Comprobando disponibilidad…';
+    try {
+      await askFia(message);
+      status.textContent = 'Solicitud enviada. FIA confirmará la reserva cuando el calendario la valide.';
+      bookingForm.reset();
+    } catch { status.textContent = 'No se ha podido enviar la solicitud. Escríbenos por WhatsApp o email.'; }
+  });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !modal.hidden) closeModal(); });
+})();
