@@ -31,7 +31,8 @@ exports.handler = async function (event) {
     let reply = raw;
     try {
       const parsed = JSON.parse(raw);
-      reply = parsed.output || parsed.reply || parsed.result || parsed.message || raw;
+      const item = Array.isArray(parsed) ? (parsed[0] || {}) : parsed;
+      reply = item.output || item.reply || item.result || item.message || item.data?.output || item.data?.reply || raw;
     } catch {}
 
     return { statusCode: 200, headers, body: JSON.stringify({ reply: String(reply).trim() }) };
