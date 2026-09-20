@@ -15,7 +15,7 @@ exports.handler = async function (event) {
       return { statusCode: 400, headers, body: JSON.stringify({ error: 'Consulta no válida' }) };
     }
 
-    const webhookUrl = 'https://fantasia-n8n.zca39d.easypanel.host/webhook/fia-web';
+    const webhookUrl = 'https://fantasia-n8n.zca39d.easypanel.host/webhook/fia-web-chat';
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 25000);
     const response = await fetch(webhookUrl, {
