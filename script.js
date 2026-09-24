@@ -1,3 +1,10 @@
+if (!window.__fantasiaAnalyticsLoader) {
+  window.__fantasiaAnalyticsLoader = true;
+  const analyticsScript = document.createElement('script');
+  analyticsScript.src = 'analytics.js';
+  document.head.appendChild(analyticsScript);
+}
+
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
 const header = document.querySelector('.site-header');
