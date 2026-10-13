@@ -72,3 +72,5 @@ body{background:linear-gradient(135deg,#101018 0%,#151326 46%,#10182a 100%);colo
 .service-card .text-link,.pack-card .button{min-height:46px;justify-content:center}
 .pack-card{display:flex;flex-direction:column}.pack-card .pack-list{margin-bottom:18px}.pack-card .button{margin-top:auto}.pack-card--content .button{margin-top:18px}
 @media(max-width:720px){.container{width:min(calc(100% - 30px),var(--max))}.main-nav a:not(.nav-cta){padding:10px 12px!important}.service-card,.pack-card{padding:22px 18px}.service-card .text-link,.pack-card .button{width:100%;padding-inline:14px}.area-heading{grid-template-columns:30px 1fr 26px;gap:8px}.area-heading h3{font-size:clamp(1.75rem,9vw,2.3rem)}.section-heading h2{font-size:clamp(2.15rem,11vw,3rem)}.packs-grid{grid-template-columns:1fr!important;gap:18px!important}.footer-bottom{gap:12px;text-align:center}}
+/* Marca visible actualizada sin alterar la estructura del sitio. */
+.brand-name{font-size:0!important}.brand-name::after{content:"FantasIA Core";font-size:1rem;letter-spacing:.02em}
