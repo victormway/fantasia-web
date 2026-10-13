@@ -107,3 +107,11 @@ body:after{opacity:.72!important;background:radial-gradient(ellipse 44% 16% at 8
 
 /* Corrección final de imagen: cargar FIA con ruta pública directa. */
 .hero-visual .visual-card:after{background-image:radial-gradient(circle at 50% 43%,rgba(106,75,255,.2),transparent 42%),url("https://www.fantasia-web.com/fia-robot-transparent.png")!important;background-position:center,center!important;background-size:100% 100%,auto 82%!important;background-repeat:no-repeat!important}
+
+
+/* Centrado real de la bienvenida de FIA en pantallas estrechas. */
+@media(max-width:720px){
+  .fia-intro-stage{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;inset:0!important;width:100vw!important;min-height:100svh!important;transform:none!important;padding:0 16px!important;box-sizing:border-box!important;gap:10px!important}
+  .fia-intro-robot{position:relative!important;left:auto!important;right:auto!important;width:min(310px,78vw)!important;height:min(350px,48svh)!important;margin:0 auto!important;transform:none!important}
+  .fia-intro-copy{width:100%!important;max-width:330px!important;margin:0 auto!important;text-align:center!important;align-items:center!important}
+}
