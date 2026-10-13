@@ -104,3 +104,6 @@ body:after{opacity:.72!important;background:radial-gradient(ellipse 44% 16% at 8
 /* Corrección de render: FIA se pinta en la capa frontal de la tablet. */
 .hero-visual .visual-card{background:linear-gradient(145deg,#252449,#11152b)!important}
 .hero-visual .visual-card:after{inset:0!important;border-radius:0;background:radial-gradient(circle at 50% 43%,rgba(106,75,255,.2),transparent 42%),url("fia-robot-transparent.png") center/auto 82% no-repeat!important;filter:drop-shadow(0 0 20px rgba(106,75,255,.4));animation:fia-card-glow 5s ease-in-out infinite alternate}
+
+/* Corrección final de imagen: cargar FIA con ruta pública directa. */
+.hero-visual .visual-card:after{background-image:radial-gradient(circle at 50% 43%,rgba(106,75,255,.2),transparent 42%),url("https://www.fantasia-web.com/fia-robot-transparent.png")!important;background-position:center,center!important;background-size:100% 100%,auto 82%!important;background-repeat:no-repeat!important}
