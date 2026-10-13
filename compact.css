@@ -74,3 +74,21 @@ body{background:linear-gradient(135deg,#101018 0%,#151326 46%,#10182a 100%);colo
 @media(max-width:720px){.container{width:min(calc(100% - 30px),var(--max))}.main-nav a:not(.nav-cta){padding:10px 12px!important}.service-card,.pack-card{padding:22px 18px}.service-card .text-link,.pack-card .button{width:100%;padding-inline:14px}.area-heading{grid-template-columns:30px 1fr 26px;gap:8px}.area-heading h3{font-size:clamp(1.75rem,9vw,2.3rem)}.section-heading h2{font-size:clamp(2.15rem,11vw,3rem)}.packs-grid{grid-template-columns:1fr!important;gap:18px!important}.footer-bottom{gap:12px;text-align:center}}
 /* Marca visible actualizada sin alterar la estructura del sitio. */
 .brand-name{font-size:0!important}.brand-name::after{content:"FantasIA Core";font-size:1rem;letter-spacing:.02em}
+
+
+/* Ajuste visible final: botones, color ambiental, logo y FIA centrada. */
+.text-link,.pack-card .button{font-size:0!important;gap:6px;min-width:194px}
+.text-link::before,.pack-card .button::before{content:"Conocer el servicio";font-size:.8rem;line-height:1}
+.text-link span,.pack-card .button span{font-size:.9rem;margin-left:0}
+.service-card .text-link{background:linear-gradient(135deg,#e9ddff,#b9d4ff)!important;border-color:#d9c7ff!important;color:#241936!important}
+.service-card .text-link:hover{background:linear-gradient(135deg,#fff,#d5e6ff)!important}
+.service-card .quote-link{background:linear-gradient(135deg,#f1d9ff,#c8b7ff)!important;border-color:#e0c6ff!important}
+.service-card .quote-link:hover{background:linear-gradient(135deg,#fff0ff,#ddd2ff)!important}
+.pack-card--ai .button{background:linear-gradient(135deg,#f1d9ff,#bcaeff)!important;border-color:#e4c9ff!important}
+.pack-card--content .button{background:linear-gradient(135deg,#d9e9ff,#a8caff)!important;border-color:#c3ddff!important}
+.brand-logo{filter:drop-shadow(0 0 9px rgba(106,75,255,.55)) drop-shadow(0 0 5px rgba(59,130,246,.35))}
+body:after{opacity:.72!important;background:radial-gradient(ellipse 44% 16% at 8% 18%,transparent 60%,rgba(106,75,255,.2) 62%,transparent 65%),radial-gradient(ellipse 42% 14% at 94% 44%,transparent 60%,rgba(59,130,246,.17) 62%,transparent 65%),radial-gradient(ellipse 52% 20% at 45% 88%,transparent 61%,rgba(184,92,246,.14) 63%,transparent 66%)!important}
+.fia-intro-stage{place-items:center!important;align-content:center!important;text-align:center}
+.fia-intro-robot{left:0!important;right:0!important;margin-inline:auto!important;transform-origin:center!important}
+.fia-intro-robot img{object-position:center center!important;margin-inline:auto!important}
+@media(max-width:720px){.fia-intro-stage{inset:0!important;padding:0 18px!important}.fia-intro-robot{width:min(330px,82vw)!important;height:min(360px,52vh)!important}.fia-intro-copy{max-width:330px;margin-inline:auto}.text-link,.pack-card .button{width:100%;min-width:0}}
