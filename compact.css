@@ -47,3 +47,8 @@ body:after{animation:background-drift 22s ease-in-out infinite alternate}
 @media(max-width:720px){.hero{padding-bottom:55px}.hero-visual{height:390px}.intro-section,.section,.packs-section,.pricing-section,.benefits-section,.process-section,.contact-section{padding-top:58px;padding-bottom:58px}.location-section{padding-bottom:60px}}
 /* Fase escaparate: presentamos los servicios sin precios ni formularios. */
 .price,.custom-price,.price-prefix,.pack-card-price,.scope-note,.contact-form,.custom-form{display:none!important}
+/* Pie legal: separacion visible */
+.footer-bottom>span:nth-child(2){display:flex!important;gap:16px!important;flex-wrap:wrap!important;color:rgba(218,211,232,.68)}
+.footer-bottom .legal-links{display:inline-flex!important;gap:16px!important;flex-wrap:wrap!important;white-space:nowrap!important}
+.footer-bottom .legal-links a{margin:0 2px!important;color:rgba(205,196,226,.72)!important}
+@media(max-width:720px){.footer-bottom>span:nth-child(2){flex-direction:column!important;gap:8px!important}.footer-bottom .legal-links{gap:12px!important}}
