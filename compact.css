@@ -52,3 +52,8 @@ body:after{animation:background-drift 22s ease-in-out infinite alternate}
 .footer-bottom .legal-links{display:inline-flex!important;gap:16px!important;flex-wrap:wrap!important;white-space:nowrap!important}
 .footer-bottom .legal-links a{margin:0 2px!important;color:rgba(205,196,226,.72)!important}
 @media(max-width:720px){.footer-bottom>span:nth-child(2){flex-direction:column!important;gap:8px!important}.footer-bottom .legal-links{gap:12px!important}}
+/* Separadores visuales del bloque legal */
+.footer-bottom .legal-links{display:inline-flex!important;align-items:center;gap:0!important;flex-wrap:wrap!important;white-space:nowrap!important}
+.footer-bottom .legal-links a{color:rgba(205,196,226,.72)!important;margin:0!important}
+.footer-bottom .legal-links a:not(:last-child)::after{content:"·";display:inline-block;margin:0 12px;color:rgba(150,135,200,.7)}
+@media(max-width:720px){.footer-bottom .legal-links a:not(:last-child)::after{margin:0 9px}}
