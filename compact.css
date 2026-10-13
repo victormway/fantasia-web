@@ -100,3 +100,7 @@ body:after{opacity:.72!important;background:radial-gradient(ellipse 44% 16% at 8
 .hero-visual .visual-card:after{content:"";position:absolute;inset:8% 16%;border-radius:50%;background:radial-gradient(circle,rgba(106,75,255,.18),transparent 66%);filter:blur(3px);pointer-events:none;animation:fia-card-glow 5s ease-in-out infinite alternate}
 @keyframes fia-card-glow{from{transform:scale(.94);opacity:.6}to{transform:scale(1.06);opacity:1}}
 @media(max-width:720px){.hero-visual .visual-card{min-height:330px;background-size:auto 83%!important}.hero-visual .visual-card:before{left:14px;bottom:12px;font-size:.68rem}}
+
+/* Corrección de render: FIA se pinta en la capa frontal de la tablet. */
+.hero-visual .visual-card{background:linear-gradient(145deg,#252449,#11152b)!important}
+.hero-visual .visual-card:after{inset:0!important;border-radius:0;background:radial-gradient(circle at 50% 43%,rgba(106,75,255,.2),transparent 42%),url("fia-robot-transparent.png") center/auto 82% no-repeat!important;filter:drop-shadow(0 0 20px rgba(106,75,255,.4));animation:fia-card-glow 5s ease-in-out infinite alternate}
