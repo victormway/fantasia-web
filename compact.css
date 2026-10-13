@@ -92,3 +92,11 @@ body:after{opacity:.72!important;background:radial-gradient(ellipse 44% 16% at 8
 .fia-intro-robot{left:0!important;right:0!important;margin-inline:auto!important;transform-origin:center!important}
 .fia-intro-robot img{object-position:center center!important;margin-inline:auto!important}
 @media(max-width:720px){.fia-intro-stage{inset:0!important;padding:0 18px!important}.fia-intro-robot{width:min(330px,82vw)!important;height:min(360px,52vh)!important}.fia-intro-copy{max-width:330px;margin-inline:auto}.text-link,.pack-card .button{width:100%;min-width:0}}
+
+/* Hero FIA: reemplaza la pantalla vacía por una presencia visual útil e interactiva. */
+.hero-visual .visual-card>*{display:none!important}
+.hero-visual .visual-card{position:relative;display:grid!important;place-items:center;min-height:390px;background:radial-gradient(circle at 50% 42%,rgba(83,126,255,.25),transparent 38%),linear-gradient(145deg,#252449,#11152b),url("fia-robot-transparent.png") center/auto 80% no-repeat!important}
+.hero-visual .visual-card:before{content:"FIA  ·  tu asistente digital";display:block!important;position:absolute;z-index:3;left:18px;bottom:16px;color:#d9cbff;font-size:.78rem;letter-spacing:.08em;font-weight:700;text-transform:uppercase}
+.hero-visual .visual-card:after{content:"";position:absolute;inset:8% 16%;border-radius:50%;background:radial-gradient(circle,rgba(106,75,255,.18),transparent 66%);filter:blur(3px);pointer-events:none;animation:fia-card-glow 5s ease-in-out infinite alternate}
+@keyframes fia-card-glow{from{transform:scale(.94);opacity:.6}to{transform:scale(1.06);opacity:1}}
+@media(max-width:720px){.hero-visual .visual-card{min-height:330px;background-size:auto 83%!important}.hero-visual .visual-card:before{left:14px;bottom:12px;font-size:.68rem}}
