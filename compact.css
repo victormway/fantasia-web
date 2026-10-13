@@ -1,4 +1,9 @@
-/* Último ajuste visual: recorrido más compacto y mejor equilibrio morado/azul. */
+
+
+/* Separar la ubicación y los enlaces legales del pie. */
+.footer-bottom>span:nth-child(2){display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.footer-bottom .legal-links{display:inline-flex!important;align-items:center;gap:14px!important;flex-wrap:wrap;white-space:nowrap}
+@media(max-width:720px){.footer-bottom>span:nth-child(2){flex-direction:column;gap:8px}.footer-bottom .legal-links{gap:12px!important}}/* Último ajuste visual: recorrido más compacto y mejor equilibrio morado/azul. */
 .hero{min-height:auto;padding-top:38px;padding-bottom:58px}
 .hero-visual{height:500px}
 .intro-section{padding:78px 0 70px}
