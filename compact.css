@@ -115,3 +115,8 @@ body:after{opacity:.72!important;background:radial-gradient(ellipse 44% 16% at 8
   .fia-intro-robot{position:relative!important;left:auto!important;right:auto!important;width:min(310px,78vw)!important;height:min(350px,48svh)!important;margin:0 auto!important;transform:none!important}
   .fia-intro-copy{width:100%!important;max-width:330px!important;margin:0 auto!important;text-align:center!important;align-items:center!important}
 }
+
+
+/* Logo oficial PNG subido por el propietario. */
+.brand-logo{content:url("Captura de pantalla 2026-10-13 091133.png")!important;object-fit:contain!important}
+.hero-visual:before{background-image:url("Captura de pantalla 2026-10-13 091133.png")!important}
