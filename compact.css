@@ -57,3 +57,18 @@ body:after{animation:background-drift 22s ease-in-out infinite alternate}
 .footer-bottom .legal-links a{color:rgba(205,196,226,.72)!important;margin:0!important}
 .footer-bottom .legal-links a:not(:last-child)::after{content:"·";display:inline-block;margin:0 12px;color:rgba(150,135,200,.7)}
 @media(max-width:720px){.footer-bottom .legal-links a:not(:last-child)::after{margin:0 9px}}
+/* FantasIA Core: más luz, contraste y movimiento sutil. */
+:root{--bg:#101018;--panel:#181727;--panel-2:#211b35;--text:#f8f5ff;--muted:#c0b8cf;--line:rgba(210,198,255,.16)}
+body{background:linear-gradient(135deg,#101018 0%,#151326 46%,#10182a 100%);color:var(--text)}
+.site-header{background:rgba(16,16,24,.82)}
+.service-card,.pack-card{background:linear-gradient(145deg,rgba(42,33,68,.9),rgba(22,23,39,.96))}
+.service-card:hover,.pack-card:hover{box-shadow:0 18px 45px rgba(73,54,147,.3),0 0 0 1px rgba(95,156,255,.16)}
+.brand-name{color:#f7f1ff!important;text-shadow:0 0 18px rgba(167,130,255,.28)}
+.hero h1 em,h2 em,.area-heading h3{color:#c7afff}
+.reveal{transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.hero-visual .visual-card{animation:core-float 8s ease-in-out infinite alternate}
+@keyframes core-float{from{transform:perspective(900px) rotateX(var(--tablet-x,0deg)) rotateY(var(--tablet-y,4deg)) rotateZ(1deg) translateY(0)}to{transform:perspective(900px) rotateX(var(--tablet-x,0deg)) rotateY(var(--tablet-y,4deg)) rotateZ(2deg) translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){.hero-visual .visual-card{animation:none}}
+.service-card .text-link,.pack-card .button{min-height:46px;justify-content:center}
+.pack-card{display:flex;flex-direction:column}.pack-card .pack-list{margin-bottom:18px}.pack-card .button{margin-top:auto}.pack-card--content .button{margin-top:18px}
+@media(max-width:720px){.container{width:min(calc(100% - 30px),var(--max))}.main-nav a:not(.nav-cta){padding:10px 12px!important}.service-card,.pack-card{padding:22px 18px}.service-card .text-link,.pack-card .button{width:100%;padding-inline:14px}.area-heading{grid-template-columns:30px 1fr 26px;gap:8px}.area-heading h3{font-size:clamp(1.75rem,9vw,2.3rem)}.section-heading h2{font-size:clamp(2.15rem,11vw,3rem)}.packs-grid{grid-template-columns:1fr!important;gap:18px!important}.footer-bottom{gap:12px;text-align:center}}
